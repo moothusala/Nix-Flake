@@ -1,0 +1,14 @@
+# Who can decrypt what. After editing recipients run:
+#   sops updatekeys secrets/secrets.yaml
+keys:
+  # Admin: age key at ~/.config/sops/age/keys.txt in WSL.
+  - &admin_moothusala age1eh8pduf8j75ryzzyajhjtwqp40p7fen0l452sju4gx2a32p04c3sjyjnrf
+  # Hosts: `ssh-keyscan -t ed25519 <host> | ssh-to-age`
+  - &host_testVM-01 age1ta2qvfw53une8y08e7ns6jskhs8pmela8umva2z43puyl04u85zqv4g6c2
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *admin_moothusala
+          - *host_testVM-01
