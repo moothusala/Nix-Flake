@@ -42,6 +42,7 @@ machines/
 | `lazyvim` | LazyVim via [lazyvim-nix] (declarative plugins, no Mason) |
 | `wayland` | graphics, portals, polkit, keyring, fonts, `NIXOS_OZONE_WL` |
 | `niri` | niri + greetd/tuigreet login |
+| `niri-software-render` | **VMs only**: rebuilds niri so it accepts the CPU renderer (llvmpipe) on GPU-less hosts like Hyper-V |
 | `noctalia` | Noctalia shell as a systemd user service |
 | `pipewire` | PipeWire with ALSA/Pulse/JACK, rtkit |
 | `yubikey` | pcscd, udev rules, ykman/PIV/FIDO2 tools, gpg agent; scdaemon `disable-ccid` so it doesn't fight pcscd |
@@ -123,9 +124,10 @@ Notes:
 - The hostname changes from `vm-nixos1` to `testVM-01`. Its mDNS name becomes `testVM-01.local`.
 - Password SSH logins are disabled after the switch. Make sure your key
   works first: `ssh -i <key> moothusala@<vm-ip>`.
-- niri needs a GPU render device. A Hyper-V VM without GPU passthrough may
-  not be able to start it. If the session fails from tuigreet, run
-  `journalctl --user -b` to see why. The config is fine for real hardware.
+- Stock niri refuses CPU-only rendering, so a GPU-less VM gets a black
+  screen. testVM-01 includes `niri-software-render` to work around this.
+  Leave it off hosts with a real GPU. If a session fails, check
+  `journalctl --user -b -u niri`.
 
 ## Maintenance
 

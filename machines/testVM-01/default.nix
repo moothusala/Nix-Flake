@@ -9,6 +9,7 @@
       profile-desktop
       profile-development
       smb-automount
+      niri-software-render # Hyper-V has no GPU
       host-testVM-01
     ];
   };
