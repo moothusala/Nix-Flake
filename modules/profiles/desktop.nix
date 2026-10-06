@@ -9,6 +9,7 @@
       pipewire
       alacritty
       vscode
+      brave
       yubikey
     ];
   };
