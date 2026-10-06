@@ -5,6 +5,8 @@ keys:
   - &admin_moothusala age1eh8pduf8j75ryzzyajhjtwqp40p7fen0l452sju4gx2a32p04c3sjyjnrf
   # Hosts: `ssh-keyscan -t ed25519 <host> | ssh-to-age`
   - &host_testVM-01 age1ta2qvfw53une8y08e7ns6jskhs8pmela8umva2z43puyl04u85zqv4g6c2
+  - &host_Oberon age1t3vjnksm8myc2pqwqqmnxgvst4ts6q7vssewxprh26q6s7uprq7q3cny6p
+  - &host_Norn age1a5le56kenj2x2cu7es9kemfwjw62tajccf60twrv4j4rk9rm65wshhyhag
 
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
@@ -12,3 +14,5 @@ creation_rules:
       - age:
           - *admin_moothusala
           - *host_testVM-01
+          - *host_Oberon
+          - *host_Norn

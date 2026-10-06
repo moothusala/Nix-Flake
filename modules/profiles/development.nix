@@ -1,11 +1,10 @@
-# Developer tooling. Works on desktops and headless hosts (vscode needs a desktop).
+# Command-line developer tooling. Safe for headless hosts.
 { config, ... }:
 {
   flake.modules.nixos.profile-development = {
     imports = with config.flake.modules.nixos; [
       lazyvim
       lazygit
-      vscode
       dotnet
       python
       containers

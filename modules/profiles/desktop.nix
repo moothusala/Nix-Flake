@@ -1,4 +1,4 @@
-# Graphical workstation: Wayland + niri + Noctalia, audio, terminal, YubiKey.
+# Graphical workstation: Wayland + niri + Noctalia, audio, GUI apps, YubiKey.
 { config, ... }:
 {
   flake.modules.nixos.profile-desktop = {
@@ -8,6 +8,7 @@
       noctalia
       pipewire
       alacritty
+      vscode
       yubikey
     ];
   };

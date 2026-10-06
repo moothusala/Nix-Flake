@@ -1,4 +1,11 @@
 # niri compositor + greetd/tuigreet login. Pair with `wayland` and `noctalia`.
+# The user's niri config is ./_niri/config.kdl (scrolling layout, touchpad
+# scrolling, Noctalia keybinds).
+{ config, ... }:
+let
+  inherit (config.meta) username;
+  hm = config.flake.modules.homeManager;
+in
 {
   flake.modules.nixos.niri =
     { pkgs, ... }:
@@ -15,8 +22,13 @@
 
       environment.systemPackages = with pkgs; [
         xwayland-satellite # X11 apps under niri
-        fuzzel # default launcher in niri's stock config (Mod+D)
-        alacritty # default terminal in niri's stock config (Mod+T)
+        alacritty # Mod+T
       ];
+
+      home-manager.users.${username}.imports = [ hm.niri ];
     };
+
+  flake.modules.homeManager.niri = {
+    xdg.configFile."niri/config.kdl".source = ./_niri/config.kdl;
+  };
 }
