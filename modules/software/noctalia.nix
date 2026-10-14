@@ -1,5 +1,5 @@
 # Noctalia shell (bar, launcher, notifications), started as a systemd user
-# service with the graphical session; niri-session pulls that target in.
+# service with the graphical session; mango-session.target pulls that in.
 { inputs, ... }:
 {
   flake.modules.nixos.noctalia = {
