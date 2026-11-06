@@ -8,6 +8,7 @@
       profile-development
       profile-laptop
       smb-automount
+      tui-tools
       disk-labels
       host-Oberon
     ];
